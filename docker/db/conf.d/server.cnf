@@ -1,0 +1,13 @@
+[mysqld]
+# charset
+character_set_server=utf8mb4
+collation_server=utf8mb4_unicode_ci
+# timezone
+#default_time_zone=Asia/Seoul
+# connection and timeout
+max_connections=50
+wait_timeout=3600
+# innodb
+transaction-isolation=READ-COMMITTED
+innodb_thread_concurrency=16
+innodb_flush_method=O_DIRECT
