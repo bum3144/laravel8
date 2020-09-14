@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,15 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return __METHOD__ . "은(는) Atticle 컬렉션을 조회한다";
+        $user = Auth::user();
+        $id = Auth::id();
+
+        // abort_unless(Auth::user(), 403);
+        if (! Auth::check()) {
+            return "로그인 확인 안됨";
+        }
+
+        return __METHOD__ . $id . "은(는) Atticle 컬렉션을 조회한다";
     }
 
     /**

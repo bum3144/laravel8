@@ -26,3 +26,8 @@ Route::get('/', function () {
 Route::get('test', [TestsController::class, 'index']);
 
 Route::resource('articles', ArticlesController::class);
+// Route::resource('articles', ArticlesController::class)->middleware('auth');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
