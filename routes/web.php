@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestsController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,25 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// $router->pattern('foo', '[0-9a-zA-Z]{4}');
-// Route::get('/{foo?}', function ($foo = 'bar') {
-//     return view('welcome', ['foo' => $foo]);
-// })->where('foo', '[0-9a-zA-Z]{3}');
-
-// Route::get('/', [
-//     'as' => 'home',
-//     function (){
-//         return 'hi';
-//     }
-// ]);
-
-// Route::get('/home', function() {
-//     return redirect(route('home'));
-// });
-
-// Route::get('/', function (){
-//     return view('errors.503');
-// });
 
 Route::get('/', function () {
     return view('welcome', [
@@ -39,3 +22,7 @@ Route::get('/', function () {
         'greeting' => 'Hello'
         ]);
 });
+
+Route::get('test', [TestsController::class, 'index']);
+
+Route::resource('articles', ArticlesController::class);
